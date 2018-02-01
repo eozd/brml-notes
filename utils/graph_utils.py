@@ -24,6 +24,10 @@ def digraph_from_numpy_array(arr, labels=None, edge_fmt='{:.2f}'):
     assert(arr.shape[0] == arr.shape[1])
 
     G = gz.Digraph()
+    G.engine = 'dot'
+    G.attr('graph', splines='true', sep='1')
+    G.attr('node', width='0.25', shape='circle')
+
     num_nodes = len(arr)
     if labels is None:
         labels = list(str(index) for index in range(num_nodes))
